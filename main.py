@@ -32,7 +32,7 @@ Content-Type: text/plain; charset="UTF-8";
 Регистрируйся → %website%
 На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл.'''.format(email_from=email_from,email_to=email_to,subject=subject)
 login = 'episodeboli@yandex.ru'
-password = 'episodeofpain52'
+password = 'uyrllavtklyndbbm'
 letter = letter.replace('%website%', website)
 letter = letter.replace('%friend_name%', friend_name)
 letter = letter.replace('%my_name%', my_name)
