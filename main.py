@@ -1,6 +1,9 @@
 import smtplib
+from dotenv import load_dotenv
+import os
 
 
+load_dotenv('pass.env')
 my_name = 'Алексей'
 friend_name = 'Василий'
 website = 'https://dvmn.org/referrals/2ZZypO6FEbdN693QUfJpA28yctjg6XIwnLdMYNzg/'
@@ -31,15 +34,14 @@ Content-Type: text/plain; charset="UTF-8";
 
 Регистрируйся → %website%
 На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл.'''.format(email_from=email_from,email_to=email_to,subject=subject)
-login = 'episodeboli@yandex.ru'
-password = 'uyrllavtklyndbbm'
+login = os.environ['LOGIN']
+password = os.environ['PASSWORD']
 letter = letter.replace('%website%', website)
 letter = letter.replace('%friend_name%', friend_name)
 letter = letter.replace('%my_name%', my_name)
-letter.encode("UTF-8")
+encoded_letter = letter.encode("UTF-8")
 server = smtplib.SMTP_SSL('smtp.yandex.ru:465')
 server.login(login, password)
-server.sendmail(email_from, email_to, letter)
+server.sendmail(email_from, email_to, encoded_letter)
 server.quit()
-print(letter)
 
